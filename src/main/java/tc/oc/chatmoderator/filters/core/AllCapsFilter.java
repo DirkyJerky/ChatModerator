@@ -42,7 +42,7 @@ public class AllCapsFilter extends WordFilter {
         Preconditions.checkArgument(maxChars > -1, "Max chars must be at least zero!");
 
         this.maxChars = maxChars;
-        this.pattern = Pattern.compile("[A-Z0-9]{" + (maxChars+1) + ",}");
+        this.pattern = Pattern.compile("[A-Z][A-Z0-9]{" + (maxChars-1) + ",}");
     }
 
     /**
@@ -97,6 +97,6 @@ public class AllCapsFilter extends WordFilter {
      * @return The pattern.
      */
     public static Pattern getBasePattern(int maxChars) {
-        return Pattern.compile("[A-Z0-9]{" + maxChars + ",}");
+        return Pattern.compile("[A-Z][A-Z0-9]{" + (maxChars-1) + ",}");
     }
 }
